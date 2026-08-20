@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+
+# Ambiente virtual
+venv/
+env/
+.venv/
+
+# Ambiente local / segredos
+.env
+.env.local
+*.env
+!*.env.template
+!*.env.example
+
+# Logs
+logs/
+*.log
+
+# Jira Sync - Arquivos de Estado
+.sync_state.json
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+
+# Testes
+.pytest_cache/

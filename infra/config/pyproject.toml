@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rag-ecosystem"
+version = "2.0.0"
+description = "Ecossistema de Projetos RAG - Infraestrutura e Gestão"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    {name = "Wemerson Souza", email = "wemerson@example.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "requests>=2.28.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+
+[project.scripts]
+rag-start = "start_project:main"
+jira-sync = "core.jira_sync:main"
+jira-update = "core.atualizar_tarefa:main"
+jira-helper = "core.jira_helper:main"
+git-jira-link = "core.git_jira_link:main"
+rag-clean = "core.limpar_jira:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["lib*", "core*"]
+
+[[tool.setuptools.packages]]
+name = "infra.lib"
+path = "lib"
+
+[[tool.setuptools.packages]]
+name = "infra.core"
+path = "core"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "C4", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true

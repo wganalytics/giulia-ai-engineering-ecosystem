@@ -1,0 +1,30 @@
+{
+  "ecosystem": "Giulia AI Engineering Ecosystem",
+  "version": "2.0",
+  "projects": [
+    {
+      "id": "rag-core",
+      "name": "Giulia RAG Ecosystem",
+      "domain": "information-retrieval",
+      "path": "rag",
+      "jira_project_key": "RAG",
+      "status": "active"
+    },
+    {
+      "id": "open-claw",
+      "name": "Open Claw Agent",
+      "domain": "autonomous-agents",
+      "path": "open-claw",
+      "jira_project_key": "OCLAW",
+      "status": "in_development"
+    },
+    {
+      "id": "mcp-integration",
+      "name": "Model Context Protocol (MCP)",
+      "domain": "interoperability",
+      "path": "mcp",
+      "jira_project_key": "MCP",
+      "status": "planning"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-08-19T11:19:13.219149Z",
+  "health_score": 92.0,
+  "metrics": {
+    "global_score": 80.0,
+    "projects_average_score": 100.0,
+    "orphan_files_count": 0,
+    "rlm_freshness_days": 0
+  },
+  "projects": {}
+}

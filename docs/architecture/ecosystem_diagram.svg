@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2040 2000" role="img" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #0d1117;">
+  <title>GIULIA AI ENGINEERING ECOSYSTEM - v9.0 Architecture</title>
+
+  <defs>
+    <!-- Arrow marker for data flow -->
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L0,12 L12,6 z" fill="#8b949e"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L0,12 L12,6 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L0,12 L12,6 z" fill="#3fb950"/>
+    </marker>
+    <marker id="arrow-amber" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L0,12 L12,6 z" fill="#d29922"/>
+    </marker>
+
+    <!-- Gradients -->
+    <linearGradient id="bgDev" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#231934" />
+      <stop offset="100%" stop-color="#1b1228" />
+    </linearGradient>
+
+    <linearGradient id="bgGov" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#142618" />
+      <stop offset="100%" stop-color="#0f1c12" />
+    </linearGradient>
+
+    <linearGradient id="bgEco" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#152033" />
+      <stop offset="100%" stop-color="#0d1421" />
+    </linearGradient>
+
+    <linearGradient id="bgObs" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#361a1a" />
+      <stop offset="100%" stop-color="#241111" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    .title { fill: #c9d1d9; font-size: 54px; font-weight: 800; letter-spacing: 4px; }
+    .subtitle { fill: #8b949e; font-size: 30px; letter-spacing: 2px; }
+    
+    .layer-title { font-size: 42px; font-weight: bold; }
+    .layer-path { fill: #8b949e; font-size: 24px; font-family: monospace; }
+    
+    .node-bg { fill: #161b22; stroke: rgba(255,255,255,0.1); stroke-width: 2px; }
+    .node-title { fill: #e8eaf0; font-size: 26px; font-weight: 600; }
+    .node-desc { fill: #8b949e; font-size: 20px; }
+    
+    .conn-line { fill: none; stroke: #8b949e; stroke-width: 4px; stroke-dasharray: 10,10; }
+    .conn-solid { fill: none; stroke: #8b949e; stroke-width: 4px; }
+    .conn-blue { fill: none; stroke: #58a6ff; stroke-width: 5px; }
+    .conn-green { fill: none; stroke: #3fb950; stroke-width: 5px; }
+    .conn-amber { fill: none; stroke: #d29922; stroke-width: 5px; }
+
+    .label-bg { fill: #0d1117; }
+    .label-text { fill: #c9d1d9; font-size: 20px; font-weight: 600; text-anchor: middle; }
+    
+    .divider { stroke: rgba(255,255,255,0.1); stroke-width: 2px; stroke-dasharray: 12,12; }
+    .fase-text { fill: rgba(255,255,255,0.3); font-size: 32px; font-weight: 800; letter-spacing: 8px; }
+  </style>
+
+  <!-- Title Section -->
+  <text x="1020" y="100" class="title" text-anchor="middle">GIULIA AI ENGINEERING ECOSYSTEM</text>
+  <text x="1020" y="150" class="subtitle" text-anchor="middle">ARQUITETURA DE GOVERNANÇA, AGENTES E HANDOFF (v9.0)</text>
+
+  <!-- Phase Dividers -->
+  <line x1="680" y1="250" x2="680" y2="1960" class="divider"/>
+  <line x1="1360" y1="250" x2="1360" y2="1960" class="divider"/>
+  
+  <text x="340" y="240" class="fase-text" text-anchor="middle">DEV &amp; CONTEXT (1)</text>
+  <text x="1020" y="240" class="fase-text" text-anchor="middle">GOVERNANCE &amp; MEMORY (2)</text>
+  <text x="1700" y="240" class="fase-text" text-anchor="middle">ECOSYSTEM &amp; OBS (3)</text>
+
+  <!-- ==================== DEV LAYER (Left) ==================== -->
+  <g transform="translate(60, 300)">
+    <rect x="0" y="0" width="560" height="1300" rx="24" fill="url(#bgDev)" stroke="#8957e5" stroke-width="3"/>
+    <text x="40" y="60" fill="#d2a8ff" class="layer-title">Developer Layer</text>
+    <text x="40" y="100" class="layer-path">/dev</text>
+
+    <!-- Project Node -->
+    <rect x="40" y="150" width="480" height="200" rx="12" class="node-bg"/>
+    <text x="60" y="195" class="node-title" fill="#d2a8ff">Workspace: Projetos (PRJ-XX)</text>
+    <text x="60" y="235" class="node-desc">/Giulia/PRJ-XX_NomeDoProjeto</text>
+    <text x="60" y="270" class="node-desc">Onde o código-fonte (SaaS, Agents,</text>
+    <text x="60" y="305" class="node-desc">APIs) é escrito e testado iterativamente.</text>
+
+    <!-- Context Node -->
+    <rect x="40" y="400" width="480" height="180" rx="12" class="node-bg"/>
+    <text x="60" y="445" class="node-title" fill="#d2a8ff">Handoff Trace (Sync)</text>
+    <text x="60" y="485" class="node-desc">.sync_state.json &amp; handoff_trace.jsonl</text>
+    <text x="60" y="520" class="node-desc">Rastreio isolado por projeto para retomada</text>
+    <text x="60" y="555" class="node-desc">de contexto entre IAs (Claude/Gemini/Cursor)</text>
+
+    <!-- Local Diary -->
+    <rect x="40" y="630" width="480" height="160" rx="12" class="node-bg"/>
+    <text x="60" y="675" class="node-title" fill="#d2a8ff">Diário de Bordo Local</text>
+    <text x="60" y="715" class="node-desc">PRJ-XX_DIARIO_DE_BORDO.md</text>
+    <text x="60" y="750" class="node-desc">Histórico e registro da sessão focada APENAS</text>
+    <text x="60" y="775" class="node-desc">no contexto deste projeto ativo.</text>
+    
+    <!-- Environment Node -->
+    <rect x="40" y="840" width="480" height="160" rx="12" class="node-bg"/>
+    <text x="60" y="885" class="node-title" fill="#d2a8ff">Isolamento (.env local)</text>
+    <text x="60" y="925" class="node-desc">/dev/.../.env</text>
+    <text x="60" y="960" class="node-desc">Garante que ferramentas e agentes falhem-rápido</text>
+    <text x="60" y="985" class="node-desc">se operarem no contexto ou escopo errado.</text>
+  </g>
+
+  <!-- ==================== GOVERNANCE LAYER (Center) ==================== -->
+  <g transform="translate(740, 300)">
+    <rect x="0" y="0" width="560" height="1300" rx="24" fill="url(#bgGov)" stroke="#3fb950" stroke-width="3"/>
+    <text x="40" y="60" fill="#3fb950" class="layer-title">Governance Layer</text>
+    <text x="40" y="100" class="layer-path">/governance</text>
+
+    <!-- RLM Context -->
+    <rect x="40" y="150" width="480" height="160" rx="12" class="node-bg"/>
+    <text x="60" y="195" class="node-title" fill="#3fb950">CONTEXTO_RLM.md</text>
+    <text x="60" y="235" class="node-desc">Memória Operacional Dinâmica</text>
+    <text x="60" y="270" class="node-desc">A porta de entrada OBRIGATÓRIA para a IA.</text>
+    <text x="60" y="295" class="node-desc">Sem ele a IA delíra e perde as diretrizes.</text>
+
+    <!-- Central Diary -->
+    <rect x="40" y="360" width="480" height="200" rx="12" class="node-bg"/>
+    <text x="60" y="405" class="node-title" fill="#3fb950">Diário Central Master</text>
+    <text x="60" y="445" class="node-desc">diario_de_bordo.md (histórico de sessões)</text>
+    <text x="60" y="480" class="node-desc">Acumula TODOS os registros cross-project.</text>
+    <text x="60" y="515" class="node-desc">É sincronizado automaticamente via script e</text>
+    <text x="60" y="540" class="node-desc">quebrado para gerar os diários locais.</text>
+
+    <!-- Standards -->
+    <rect x="40" y="610" width="480" height="180" rx="12" class="node-bg"/>
+    <text x="60" y="655" class="node-title" fill="#3fb950">Software Engineering Standards</text>
+    <text x="60" y="695" class="node-desc">/standards (TDD, SDD, Code Review)</text>
+    <text x="60" y="730" class="node-desc">Regras de Engenharia de Software rigorosas</text>
+    <text x="60" y="765" class="node-desc">para abolir "Vibe Coding" e forçar qualidade.</text>
+
+    <!-- Sync Projects -->
+    <rect x="40" y="840" width="480" height="160" rx="12" class="node-bg"/>
+    <text x="60" y="885" class="node-title" fill="#3fb950">Registro Central (State)</text>
+    <text x="60" y="925" class="node-desc">ecosystem_registry.json &amp; projetos.yaml</text>
+    <text x="60" y="960" class="node-desc">Mapeia qual ID (Ex: PRJ-XX) pertence a qual</text>
+    <text x="60" y="985" class="node-desc">pasta e seu status sincronizado do Jira.</text>
+  </g>
+
+  <!-- ==================== ECOSYSTEM LAYER (Right) ==================== -->
+  <g transform="translate(1420, 300)">
+    <rect x="0" y="0" width="560" height="900" rx="24" fill="url(#bgEco)" stroke="#58a6ff" stroke-width="3"/>
+    <text x="40" y="60" fill="#58a6ff" class="layer-title">Ecosystem Engine</text>
+    <text x="40" y="100" class="layer-path">/ecosystem</text>
+
+    <!-- Automation -->
+    <rect x="40" y="150" width="480" height="180" rx="12" class="node-bg"/>
+    <text x="60" y="195" class="node-title" fill="#58a6ff">Core Automation Scripts</text>
+    <text x="60" y="235" class="node-desc">/automation (auto_diary.py, validator)</text>
+    <text x="60" y="270" class="node-desc">Scripts de auto-diário pós-commit,</text>
+    <text x="60" y="305" class="node-desc">manutenção e validação de integridade.</text>
+
+    <!-- Jira -->
+    <rect x="40" y="380" width="480" height="200" rx="12" class="node-bg"/>
+    <text x="60" y="425" class="node-title" fill="#58a6ff">Jira Lifecycle &amp; Sync</text>
+    <text x="60" y="465" class="node-desc">/jira (lifecycle_manager.py, jira_project_sync.py)</text>
+    <text x="60" y="500" class="node-desc">Sincronização robusta via search/jql com</text>
+    <text x="60" y="535" class="node-desc">paginação cursor-based (nextPageToken)</text>
+    <text x="60" y="560" class="node-desc">garantindo integridade de 100% dos dados.</text>
+
+    <!-- Agents & Benchmarking -->
+    <rect x="40" y="630" width="480" height="200" rx="12" class="node-bg"/>
+    <text x="60" y="675" class="node-title" fill="#58a6ff">Agents, CLI &amp; Bench</text>
+    <text x="60" y="715" class="node-desc">/bench &amp; /cli (GARE-bench &amp; gare_cli.py)</text>
+    <text x="60" y="750" class="node-desc">Acesso unificado via ACI CLI para agentes</text>
+    <text x="60" y="785" class="node-desc">e avaliação de aderência com runner e</text>
+    <text x="60" y="810" class="node-desc">banco de tarefas GARE-bench (tasks.json).</text>
+  </g>
+
+  <!-- Observability -->
+  <g transform="translate(1420, 1250)">
+    <rect x="0" y="0" width="560" height="400" rx="24" fill="url(#bgObs)" stroke="#ff7b72" stroke-width="3"/>
+    <text x="40" y="60" fill="#ff7b72" class="layer-title">Observability Layer</text>
+    <text x="40" y="100" class="layer-path">/observability &amp; /ecosystem</text>
+
+    <rect x="40" y="150" width="480" height="210" rx="12" class="node-bg"/>
+    <text x="60" y="195" class="node-title" fill="#ff7b72">Health Score &amp; Observability</text>
+    <text x="60" y="225" class="node-desc">Ecosystem Health Score (0-100) gerado</text>
+    <text x="60" y="255" class="node-desc">em tempo real por validate_ecosystem.py.</text>
+
+    <!-- Visual Dashboard Representation -->
+    <rect x="60" y="275" width="440" height="65" rx="6" fill="#0d1117" stroke="#ff7b72" stroke-opacity="0.5"/>
+    
+    <!-- Mini Bar Chart (API / Agent Success Rates) -->
+    <rect x="80" y="315" width="16" height="15" fill="#3fb950" rx="2"/>
+    <rect x="105" y="300" width="16" height="30" fill="#3fb950" rx="2"/>
+    <rect x="130" y="285" width="16" height="45" fill="#d29922" rx="2"/>
+    <rect x="155" y="310" width="16" height="20" fill="#3fb950" rx="2"/>
+    <rect x="180" y="295" width="16" height="35" fill="#ff7b72" rx="2"/>
+
+    <!-- Mini Sparkline (Execution Traces) -->
+    <path d="M 240 320 L 280 290 L 320 310 L 360 285 L 400 305 L 460 290" fill="none" stroke="#58a6ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="240" cy="320" r="4" fill="#58a6ff"/>
+    <circle cx="360" cy="285" r="4" fill="#58a6ff"/>
+    <circle cx="460" cy="290" r="4" fill="#58a6ff"/>
+  </g>
+
+  <!-- ==================== FLOW CONNECTIONS ==================== -->
+  
+  <!-- Handoff & Context flow (DEV <-> GOV) -->
+  <path d="M540,500 L740,500" class="conn-green" marker-end="url(#arrow-green)"/>
+  <rect x="560" y="475" width="160" height="50" rx="8" class="label-bg"/>
+  <text x="640" y="507" class="label-text" fill="#3fb950">Update Memória</text>
+
+  <path d="M740,200 L540,200" class="conn-solid" marker-end="url(#arrow)"/>
+  <rect x="560" y="175" width="160" height="50" rx="8" class="label-bg"/>
+  <text x="640" y="207" class="label-text">Read Context</text>
+
+  <!-- Local to Central Diary -->
+  <path d="M540,710 L740,710" class="conn-green" marker-end="url(#arrow-green)"/>
+  <rect x="560" y="685" width="160" height="50" rx="8" class="label-bg"/>
+  <text x="640" y="717" class="label-text" fill="#3fb950">Sync (fix_diaries)</text>
+
+  <!-- Gov to Ecosystem -->
+  <path d="M1220,920 L1420,920" class="conn-solid" marker-end="url(#arrow)"/>
+  <rect x="1240" y="895" width="160" height="50" rx="8" class="label-bg"/>
+  <text x="1320" y="927" class="label-text">Registra State</text>
+  
+  <!-- Jira Sync -> Gov -->
+  <path d="M1420,480 L1220,480" class="conn-blue" marker-end="url(#arrow-blue)"/>
+  <rect x="1240" y="455" width="160" height="50" rx="8" class="label-bg"/>
+  <text x="1320" y="487" class="label-text" fill="#58a6ff">Atualiza YAML/Jira</text>
+
+  <!-- Automations to Everything -->
+  <!-- Line from Eco Automations wrapping around to top to touch DEV -->
+  <path d="M1660,150 L1660,40 L340,40 L340,300" class="conn-amber" marker-end="url(#arrow-amber)"/>
+  <rect x="1020" y="15" width="240" height="50" rx="8" class="label-bg" transform="translate(30,0)"/>
+  <text x="1170" y="47" class="label-text" fill="#d29922">Validação e Inicialização</text>
+
+  <!-- Agents reading Standards -->
+  <path d="M1420,700 L1220,700" class="conn-solid" marker-end="url(#arrow)"/>
+  <rect x="1240" y="675" width="160" height="50" rx="8" class="label-bg"/>
+  <text x="1320" y="707" class="label-text">Applies SDD / TDD</text>
+
+  <!-- ==================== BUSINESS & ARCHITECTURAL VALUE ==================== -->
+  <rect x="60" y="1700" width="1920" height="220" rx="24" fill="#0d1421" stroke="#58a6ff" stroke-width="2"/>
+  <text x="100" y="1760" fill="#58a6ff" font-size="32" font-weight="bold">💎 BUSINESS &amp; ARCHITECTURAL VALUE</text>
+  
+  <text x="100" y="1810" fill="#c9d1d9" font-size="22" font-weight="bold">Escalabilidade de Agentes</text>
+  <text x="100" y="1840" fill="#8b949e" font-size="20">Isolamento rigoroso de contexto (RLM)</text>
+  <text x="100" y="1870" fill="#8b949e" font-size="20">previne alucinações em sistemas complexos.</text>
+  
+  <text x="600" y="1810" fill="#c9d1d9" font-size="22" font-weight="bold">Fail-Fast &amp; Governança</text>
+  <text x="600" y="1840" fill="#8b949e" font-size="20">Integração bidirecional (Jira API v3)</text>
+  <text x="600" y="1870" fill="#8b949e" font-size="20">barra execução e entregas sem rastreabilidade.</text>
+
+  <text x="1100" y="1810" fill="#c9d1d9" font-size="22" font-weight="bold">Qualidade por Design</text>
+  <text x="1100" y="1840" fill="#8b949e" font-size="20">Adoção estrita de TDD e SDD nativamente</text>
+  <text x="1100" y="1870" fill="#8b949e" font-size="20">abole o "Vibe Coding" e padroniza o output.</text>
+
+  <text x="1600" y="1810" fill="#c9d1d9" font-size="22" font-weight="bold">Eficiência Operacional</text>
+  <text x="1600" y="1840" fill="#8b949e" font-size="20">Sincronização contínua de Estado e Diários</text>
+  <text x="1600" y="1870" fill="#8b949e" font-size="20">automatiza mitigação de dívida técnica.</text>
+
+</svg>

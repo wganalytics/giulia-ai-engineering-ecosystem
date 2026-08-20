@@ -1,0 +1,36 @@
+# Logs (NUNCA COMMITAR)
+logs/
+*.log
+
+# Jira Sync - Arquivos de Estado
+.sync_state.json
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambiente virtual
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Ambiente local
+.env
+.env.local
+*.env
+
+# Build outputs
+dist/
+build/
+*.egg-info/

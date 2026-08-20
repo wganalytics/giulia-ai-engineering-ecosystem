@@ -1,0 +1,31 @@
+# Core RAG
+langchain==0.2.14
+langchain-community==0.2.12
+langchain-ollama==0.1.1
+chromadb==0.5.5
+pypdf==4.3.1
+sentence-transformers==3.0.1
+
+# API & Web
+fastapi==0.112.1
+uvicorn==0.30.6
+streamlit==1.37.1
+requests==2.32.3
+
+# Utilities
+python-dotenv==1.0.1
+pydantic==2.8.2
+numpy==1.26.4
+pandas==2.2.2
+matplotlib==3.9.2
+
+# GraphRAG (PRJ-06)
+neo4j==5.23.0
+
+# Memory (PRJ-02)
+redis==5.0.8
+
+# Quality & Testing
+pytest==8.3.2
+black==24.8.0
+flake8==7.1.1

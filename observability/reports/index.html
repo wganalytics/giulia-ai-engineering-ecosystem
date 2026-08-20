@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIULIA - Telemetry & Observability</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        
+        :root {
+            --bg: #0f1117;
+            --surface: rgba(22, 27, 34, 0.7);
+            --border: rgba(255, 255, 255, 0.1);
+            --text-main: #e8eaf0;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --success: #3fb950;
+            --danger: #ff7b72;
+        }
+        
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            background-image: radial-gradient(circle at 50% 0%, #1c2331 0%, transparent 70%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .header h1 {
+            font-weight: 800;
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            background: -webkit-linear-gradient(#c9d1d9, #8b949e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header p { color: var(--text-muted); }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        
+        .card-value { font-size: 3rem; font-weight: 800; margin-bottom: 5px; }
+        .card-label { color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;}
+        
+        .val-success { color: var(--success); }
+        .val-danger { color: var(--danger); }
+        .val-accent { color: var(--accent); }
+        
+        .charts-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        @media(max-width: 768px) { .charts-row { grid-template-columns: 1fr; } }
+        
+        .chart-container {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .chart-container h3 { margin-top: 0; color: var(--text-main); font-weight: 600; }
+        
+        .table-container {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            overflow-x: auto;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; }
+        tr:last-child td { border-bottom: none; }
+        
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .status-success { background: rgba(63, 185, 80, 0.15); color: var(--success); border: 1px solid rgba(63, 185, 80, 0.3); }
+        .status-fail { background: rgba(255, 123, 114, 0.15); color: var(--danger); border: 1px solid rgba(255, 123, 114, 0.3); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>GIULIA AI Telemetry</h1>
+            <p>Observabilidade e Traceability do Ecossistema | Atualizado em: 2026-08-18 — sem dados ainda</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-value">0</div>
+                <div class="card-label">Rastros Totais</div>
+            </div>
+            <div class="card">
+                <div class="card-value val-success">0</div>
+                <div class="card-label">Execuções Sucedidas</div>
+            </div>
+            <div class="card">
+                <div class="card-value val-danger">0</div>
+                <div class="card-label">Falhas / Intervenções</div>
+            </div>
+            <div class="card">
+                <div class="card-value val-accent">—</div>
+                <div class="card-label">Win Rate Global</div>
+            </div>
+            <div class="card">
+                <div class="card-value" style="color: #a371f7;">0</div>
+                <div class="card-label">Veto Activations</div>
+            </div>
+        </div>
+        
+        <div class="charts-row">
+            <div class="chart-container">
+                <h3>Distribuição por Projeto</h3>
+                <div style="position: relative; height:450px; width:100%">
+                    <canvas id="projChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <h3>Top 10 Skills Executadas</h3>
+                <div style="position: relative; height:450px; width:100%">
+                    <canvas id="skillChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <h3 style="margin-top:0">Rastros Cognitivos Recentes (Últimos 20)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data / Hora</th>
+                        <th>Projeto</th>
+                        <th>Skill Utilizada</th>
+                        <th>Status</th>
+                        <th>Justificativa do Agente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="5" style="color:var(--text-muted);text-align:center;padding:24px;">Sem dados ainda.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        Chart.defaults.color = '#8b949e';
+        Chart.defaults.font.family = 'Inter';
+        
+        new Chart(document.getElementById('projChart'), {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Traces',
+                    data: [],
+                    backgroundColor: ['#58a6ff', '#3fb950', '#ff7b72', '#d29922', '#a371f7', '#1f6feb', '#2ea043', '#f85149', '#e3b341', '#bc8cff', '#0969da', '#238636', '#da3633'],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { grid: { color: 'rgba(255,255,255,0.05)' } },
+                    y: { 
+                        grid: { display: false }, 
+                        ticks: { font: { size: 11 }, autoSkip: false } 
+                    }
+                }
+            }
+        });
+        
+        new Chart(document.getElementById('skillChart'), {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Invocações',
+                    data: [],
+                    backgroundColor: '#58a6ff',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { grid: { color: 'rgba(255,255,255,0.05)' } },
+                    x: { 
+                        grid: { display: false },
+                        ticks: { maxRotation: 45, minRotation: 45, font: { size: 10 }, autoSkip: false }
+                    }
+                },
+                layout: { padding: { bottom: 20 } }
+            }
+        });
+    </script>
+</body>
+</html>

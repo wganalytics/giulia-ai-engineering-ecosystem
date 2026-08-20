@@ -1,0 +1,26 @@
+[
+  {
+    "task_id": "GARE-BENCH-001",
+    "description": "Corrigir o timeout HTTP no endpoint de upload de arquivos.",
+    "project_key": "PRJ-XX",
+    "base_commit": "0000000",
+    "verification_command": "pytest dev/<dominio>/PRJ-XX_<projeto>/tests/test_upload.py::test_timeout_handling",
+    "difficulty": "Easy"
+  },
+  {
+    "task_id": "GARE-BENCH-002",
+    "description": "Adicionar suporte a collections baseadas no sufixo de provedor no VectorDB.",
+    "project_key": "PRJ-XX",
+    "base_commit": "0000000",
+    "verification_command": "pytest dev/<dominio>/PRJ-XX_<projeto>/tests/test_vector_isolation.py",
+    "difficulty": "Medium"
+  },
+  {
+    "task_id": "GARE-BENCH-003",
+    "description": "Integrar ferramenta de scraping de documentação externa.",
+    "project_key": "PRJ-XX",
+    "base_commit": "0000000",
+    "verification_command": "pytest dev/<dominio>/PRJ-XX_<projeto>/tests/test_scraping.py",
+    "difficulty": "Hard"
+  }
+]
