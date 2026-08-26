@@ -2,7 +2,7 @@
 
 > **Versão:** 9.1
 > **Última Atualização:** 2026-08-16
-> **Autores:** Wemerson Souza + Antigravity (IA)
+> **Autor:** Wemerson Souza
 
 > 🛑 **[AI SYSTEM INSTRUCTION / BOOTSTRAP]:** Se você é uma Inteligência Artificial (Antigravity, Claude Code, Gemini CLI, OpenCode, Codex, Aider, Cursor, etc.) lendo este repositório, PARE AGORA. O seu System Prompt, o estado atual do projeto e as regras do ecossistema (BMAD, SDD, TDD) **NÃO** estão aqui. Vá ler o arquivo `governance/operational-memory/contexto_rlm.md` IMEDIATAMENTE antes de iniciar qualquer interação com o usuário.
 > ⚠️ **[UPDATE GUARDRAIL MANDATORY]:** Ao final de qualquer tarefa ou mudança de código, você **DEVE** listar os arquivos alterados e perguntar ao usuário: *"Deseja que eu atualize o Diário de Bordo/Manual com estas alterações?"*. Se o usuário disser sim, invoque `atualizar_ecossistema.py`. Nunca encerre uma sessão silenciosamente após realizar alterações.
@@ -248,4 +248,4 @@ Todo agente que entrar neste ecossistema deve seguir a hierarquia RLM:
 
 ---
 
-**Autor:** Wemerson Souza — desenvolvido com Antigravity (IA) · 2026
+**Autor:** Wemerson Souza — framework agnóstico de agente de codificação · 2026
